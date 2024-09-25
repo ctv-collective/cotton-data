@@ -87,7 +87,7 @@ def insert_data():
             'city': parcel_data['ilAd'],
             'county': parcel_data['ilceAd'],
             'parcelIslandNo': parcel_data['parselNo'] + '/' +  parcel_data['adaNo'],
-            'parcelArea' : float(parcel_data['alan']),
+            'parcelArea' : float(parcel_data['alan'].replace('.', '').replace(',', '.')),
             'locCode' : parcel_data['ozet'],
             'timestamp' : datetime.utcnow().isoformat() + 'Z'
         }
