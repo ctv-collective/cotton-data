@@ -76,18 +76,18 @@ def insert_data():
         parcel_data = get_parcel_data(lat, lon)
         
         data = {
-            'areaCode': areaCode,
+            'areaCode': int(areaCode),
             'plateNumber': plateNumber,
-            'weight': weight,
+            'weight': int(weight),
             'weightUnit': weightUnit,
-            'humidity': humidity,
+            'humidity': int(humidity),
             'hemisphere': hemisphere,
-            'lat': lat,
-            'lon': lon,
+            'latitude': float(lat),
+            'longitude': float(lon),
             'city': parcel_data['ilAd'],
             'county': parcel_data['ilceAd'],
             'parcelIslandNo': parcel_data['parselNo'] + '/' +  parcel_data['adaNo'],
-            'parcelArea' : parcel_data['alan'],
+            'parcelArea' : float(parcel_data['alan']),
             'locCode' : parcel_data['ozet'],
             'timestamp' : datetime.utcnow().isoformat() + 'Z'
         }
