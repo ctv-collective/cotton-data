@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 import certifi
 import requests
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -46,7 +47,7 @@ def get_parcel_data(lat, lon):
             'adaNo': properties.get('adaNo'),
             'parselNo': properties.get('parselNo'),
             'pafta': properties.get('pafta'),
-            'ozet' : properties.get('ozet'),
+            'ozet' : properties.get('ozet')
         }
     else:
         # Handle non-200 responses
@@ -87,7 +88,8 @@ def insert_data():
             'county': parcel_data['ilceAd'],
             'parcelIslandNo': parcel_data['parselNo'] + '/' +  parcel_data['adaNo'],
             'parcelArea' : parcel_data['alan'],
-            'locCode' : parcel_data['ozet']
+            'locCode' : parcel_data['ozet'],
+            'timestamp' : datetime.utcnow().isoformat() + 'Z'
         }
         
         result = collection.insert_one(data)
