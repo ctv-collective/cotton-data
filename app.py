@@ -58,7 +58,8 @@ def get_parcel_data(lat, lon):
 client = connect_to_mongo(mongo_uri)
 if client:
     db = client['cotton']
-    collection = db['cotton_data']
+    #collection = db['cotton_data']
+    collection = db['240925_1730_cotton-report-data']
 
 # Endpoint to insert data into the collection
 @app.route('/insert', methods=['POST'])
